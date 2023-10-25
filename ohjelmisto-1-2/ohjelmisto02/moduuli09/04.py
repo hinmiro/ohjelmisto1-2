@@ -2,14 +2,14 @@ import random
 
 
 class Car:
-    current_speed = 0
-    traveled = 0
 
-    def __init__(self, plate, top_speed):
+    def __init__(self, plate, top_speed, current_speed=0, travelled=0):
+        self.current_speed = current_speed
+        self.travelled = travelled
         self.plate = plate
         self.top_speed = top_speed
         print(f"license: {self.plate}\ntopspeed: {self.top_speed}")
-        print(f"current speed: {self.current_speed} km/h\ntraveled: {self.traveled} km\n")
+        print(f"current speed: {self.current_speed} km/h\ntravelled: {self.travelled} km\n")
 
     def accelerate(self, speed_change):
         self.current_speed += self.current_speed + speed_change
@@ -19,7 +19,7 @@ class Car:
             self.current_speed = self.top_speed
 
     def travel(self, hours):
-        self.traveled += self.current_speed * hours
+        self.travelled += self.current_speed * hours
 
 
 temp = 1
@@ -31,13 +31,13 @@ for i in range(10):
     cars.append(car)
     temp += 1
 
-while not any(car.traveled >= 10000 for car in cars):
+while not any(car.travelled >= 10000 for car in cars):
     for car in cars:
         accelerate = random.randint(-10, 15)
         car.accelerate(accelerate)
         car.travel(1)
 
-cars_order = sorted(cars, key=lambda x: x.traveled, reverse=True)
+cars_order = sorted(cars, key=lambda x: x.travelled, reverse=True)
 
 for car in cars_order:
-    print(f"{car.plate} ----- {car.traveled}")
+    print(f"{car.plate} ----- {car.travelled}")
