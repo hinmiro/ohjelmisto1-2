@@ -39,4 +39,4 @@ while not any(car.traveled >= 10000 for car in cars):
 
 cars_order = sorted(cars, key=lambda x: x.traveled, reverse=True)
 
-print(cars[0])
+print(cars)
