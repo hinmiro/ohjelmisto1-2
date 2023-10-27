@@ -1,3 +1,22 @@
+class House:
+    elevators = []
+
+    def __init__(self, bottom, top, elevs):
+        self.bottom = bottom
+        self.top = top
+        self.elevs = elevs
+
+        for i in range(elevs):
+            elev = Elevator(self.bottom, self.top)
+            self.elevators.append(elev)
+
+    def use_elevator(self, elevator_number, floor):
+        self.elevator_number = elevator_number - 1
+        self.floor = floor
+        print(f"Elevator {self.elevator_number + 1}.")
+        self.elevators[self.elevator_number].siirry_kerrokseen(self.floor)
+
+
 class Elevator:
 
     def __init__(self, bottom, top, current=0):
@@ -8,10 +27,10 @@ class Elevator:
     def siirry_kerrokseen(self, floor):
         if floor > self.current:
             for i in range(floor - self.current):
-                elev1.kerros_ylos()
+                self.kerros_ylos()
         elif floor < self.current:
             for i in range(self.current - floor):
-                elev1.kerros_alas()
+                self.kerros_alas()
 
     def kerros_ylos(self):
         if self.current < self.top:
@@ -28,17 +47,9 @@ class Elevator:
             print("You are at bottom floor, cannot go lower.")
 
 
-elev1 = Elevator(1, 10)
-elev1.siirry_kerrokseen(6)
-print("*********")
-elev1.siirry_kerrokseen(4)
-print("*********")
-elev1.siirry_kerrokseen(6)
-print("*********")
-elev1.siirry_kerrokseen(10)
-print("*********")
-elev1.siirry_kerrokseen(11)
-print("*********")
-elev1.siirry_kerrokseen(0)
-print("*********")
-elev1.siirry_kerrokseen(-1)
+house1 = House(1, 6, 2)
+house1.use_elevator(1, 4)
+print("**********")
+house1.use_elevator(2, 3)
+print("**********")
+house1.use_elevator(1, 2)
