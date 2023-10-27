@@ -11,10 +11,13 @@ class House:
             self.elevators.append(elev)
 
     def use_elevator(self, elevator_number, floor):
-        self.elevator_number = elevator_number - 1
-        self.floor = floor
-        print(f"Elevator {self.elevator_number + 1}.")
-        self.elevators[self.elevator_number].siirry_kerrokseen(self.floor)
+        print(f"Elevator {elevator_number + 1} starting to move floor {floor}.")
+        self.elevators[elevator_number - 1].siirry_kerrokseen(floor)
+
+    def firealarm(self):
+        print("Fire alarm turned on!! All elevators are going to bottom floor.")
+        for i in range(0, len(self.elevators)):
+            house1.use_elevator(i, 0)
 
 
 class Elevator:
@@ -53,3 +56,5 @@ print("**********")
 house1.use_elevator(2, 3)
 print("**********")
 house1.use_elevator(1, 2)
+print("**********")
+house1.firealarm()
