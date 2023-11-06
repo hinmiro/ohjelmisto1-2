@@ -9,7 +9,7 @@ try:
     data = requests.get(request).json()
     if int(data["cod"]) == 200:
         temperature_celsius = data['main']['temp'] - 273.15
-        print(f"\n*** Weather in {query} ***\n"
+        print(f"\n*** Weather in {data['name']} ***\n"
               f"{data['weather'][0]['main']} ({data['weather'][0]['description']})\n"
               f"Temperature is {temperature_celsius:.1f} degrees celsius")
     else:
