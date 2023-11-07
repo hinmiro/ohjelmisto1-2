@@ -39,7 +39,6 @@ def get_icao(icao):
             response = Response(response=response_data, status=status_code, mimetype="application/json")
             return response
 
-
     except ValueError:
         response_data = {"ICAO": icao, "msg": "Faulty ICAO code"}
         status_code = 400
@@ -50,7 +49,7 @@ def get_icao(icao):
 
 
 @app.errorhandler(404)
-def page_not_found(e):
+def page_not_found():
     response = {"status": "404", "msg": "Faulty endpoint"}
     return response, 404
 
