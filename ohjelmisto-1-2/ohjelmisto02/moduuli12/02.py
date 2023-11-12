@@ -1,6 +1,6 @@
 import requests
 
-api = "76c97ac5f76c834bdfc72d531dfaa2b5"
+api = "ENTER YOU TOKEN!"
 query = input("What citys weather you want to check: ")
 
 request = f"https://api.openweathermap.org/data/2.5/weather?q={query}&appid={api}"
